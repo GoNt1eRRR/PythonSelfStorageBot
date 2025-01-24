@@ -15,3 +15,11 @@ consent_keyboard = ReplyKeyboardMarkup(
     ],
     resize_keyboard=True
 )
+
+order_keyboard = ReplyKeyboardMarkup(keyboard=[
+    [KeyboardButton(text='Курьер')],
+    [KeyboardButton(text='Самовывоз')],
+    [KeyboardButton(text='Назад')],
+], resize_keyboard=True,
+    input_field_placeholder='Выберите пункт меню',
+)
