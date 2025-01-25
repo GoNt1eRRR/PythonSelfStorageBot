@@ -1,8 +1,12 @@
+import requests
 from aiogram import Router, F
 from aiogram.types import Message
 from app.keyboards import order_keyboard
 
+from app.keyboards import inline_my_orders
+
 second_router = Router()
+BASE_URL = "http://127.0.0.1:8000/api/"
 
 
 @second_router.message(F.text == 'Тарифы')
@@ -54,3 +58,19 @@ async def order(message: Message):
     await message.answer('''Выберите, каким способом Вам удобнее отвезти груз. Наша компания предоставляет \
 бесплатную доставку грузов любых размеров до выбранного Вами склада! Курьер измерит груз и подберет подходящий \
 тариф.''', reply_markup=order_keyboard)
+
+
+@second_router.message(F.text == 'Заказы')
+async def my_orders(message: Message):
+    telegram_id = message.from_user.id
+    await message.answer('''Все Ваши заказы.''')
+    response = requests.get(f'{BASE_URL}order')
+    response.raise_for_status()
+    orders = response.json()
+
+    my_orders = []
+    for order in orders:
+        if order['customer'] == str(telegram_id):
+            my_orders.append(order)
+
+    await message.answer('''куку''', reply_markup=await inline_my_orders(my_orders))
