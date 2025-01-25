@@ -1,6 +1,5 @@
 from aiogram import Router, F
 from aiogram.types import Message
-from app.keyboards import order_keyboard
 
 second_router = Router()
 
@@ -47,10 +46,3 @@ async def plans(message: Message):
 
 10 Предметы, нарушающие санитарные нормы — например, загрязненные или старые вещи, которые могут стать источником\
  инфекции или привести к распространению вредителей.''', parse_mode='HTML')
-
-
-@second_router.message(F.text == 'Заказать ячейку')
-async def order(message: Message):
-    await message.answer('''Выберите, каким способом Вам удобнее отвезти груз. Наша компания предоставляет \
-бесплатную доставку грузов любых размеров до выбранного Вами склада! Курьер измерит груз и подберет подходящий \
-тариф.''', reply_markup=order_keyboard)
