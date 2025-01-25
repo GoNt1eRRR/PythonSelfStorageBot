@@ -19,7 +19,7 @@ consent_keyboard = ReplyKeyboardMarkup(
 order_keyboard = ReplyKeyboardMarkup(keyboard=[
     [KeyboardButton(text='Курьер')],
     [KeyboardButton(text='Самовывоз')],
-    [KeyboardButton(text='Назад')],
+    [KeyboardButton(text='В главное меню')],
 ], resize_keyboard=True,
     input_field_placeholder='Выберите пункт меню',
 )
