@@ -7,7 +7,7 @@ from aiogram.fsm.state import StatesGroup, State
 
 router = Router()
 
-BASE_URL = "http://127.0.0.1:8000/api/"
+BASE_URL = "https://rertgertgertg.pythonanywhere.com/api/"
 
 
 class RegistrationStates(StatesGroup):
