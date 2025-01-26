@@ -147,10 +147,10 @@ async def pickup(message: Message):
     response.raise_for_status()
     storages = response.json()
     list_of_storages = ''
-    for number, storage in enumerate(storages, start=1):
+        for number, storage in enumerate(storages, start=1):
         list_of_storages += f'''{number}. {storage['name']}.
-        Адрес склада - {storage['location']}.
-        Максимальное кол-во ячеек - {storage['max_capacity']}.\n\n'''
+Адрес склада - {storage['location']}.
+Максимальное кол-во ячеек - {storage['max_capacity']}.\n\n'''
     await message.answer(text=list_of_storages)
 
 
